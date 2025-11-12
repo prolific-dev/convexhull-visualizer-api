@@ -45,26 +45,48 @@ The API will be available at `http://localhost:8080`.
 
 ### Example Input
 
-Submit a JSON payload to the `/api/convexhull` endpoint:
+Submit a JSON payload to the `/api/convexhull` endpoint for 2D points:
 ```json
 {
-  "points": [
-    {"x": 1, "y": 2},
-    {"x": 3, "y": 4},
-    {"x": 5, "y": 6}
+  "input": [
+    "1.0,2.0",
+    "3.0,4.0",
+    "5.0,6.0"
+  ]
+}
+```
+
+For 3D points:
+```json
+{
+  "input": [
+    "1.0,2.0,3.0",
+    "4.0,5.0,6.0",
+    "7.0,8.0,9.0"
   ]
 }
 ```
 
 ### Example Output
 
-The API will return the convex hull points:
+For 2D points, the API will return the convex hull points:
 ```json
 {
   "hull": [
-    {"x": 1, "y": 2},
-    {"x": 5, "y": 6},
-    {"x": 3, "y": 4}
+    "1.0,2.0",
+    "5.0,6.0",
+    "3.0,4.0"
+  ]
+}
+```
+
+For 3D points:
+```json
+{
+  "hull": [
+    "1.0,2.0,3.0",
+    "7.0,8.0,9.0",
+    "4.0,5.0,6.0"
   ]
 }
 ```
