@@ -69,7 +69,8 @@ For 3D points:
 
 ### Example Output
 
-For 2D points, the API will return the convex hull points:
+#### Basic Convex Hull Response
+For 2D points, the API will return the following response:
 ```json
 {
   "hull": [
@@ -88,6 +89,59 @@ For 3D points:
     "7.0,8.0,9.0",
     "4.0,5.0,6.0"
   ]
+}
+```
+
+#### Detailed Convex Hull Response
+For 2D points, the API will return the following detailed response:
+```json
+{
+  "input": [
+    "1.0,2.0",
+    "3.0,4.0",
+    "5.0,6.0"
+  ],
+  "base": [
+    "1.0,2.0",
+    "5.0,6.0"
+  ],
+  "colinear": [
+    "3.0,4.0"
+  ],
+  "hull": [
+    "1.0,2.0",
+    "5.0,6.0",
+    "3.0,4.0"
+  ],
+  "algorithm": "Graham Scan",
+  "computationTimeMs": 12,
+  "timestamp": "2025-11-12T12:00:00Z"
+}
+```
+
+For 3D points:
+```json
+{
+  "input": [
+    "1.0,2.0,3.0",
+    "4.0,5.0,6.0",
+    "7.0,8.0,9.0"
+  ],
+  "base": [
+    "1.0,2.0,3.0",
+    "7.0,8.0,9.0"
+  ],
+  "colinear": [
+    "4.0,5.0,6.0"
+  ],
+  "hull": [
+    "1.0,2.0,3.0",
+    "7.0,8.0,9.0",
+    "4.0,5.0,6.0"
+  ],
+  "algorithm": "QuickHull",
+  "computationTimeMs": 20,
+  "timestamp": "2025-11-12T12:00:00Z"
 }
 ```
 
