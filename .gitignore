@@ -1,0 +1,76 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# macOS / Windows system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Build outputs and IDE caches
+bin/
+out/
+.idea/
+*.iml
+
+# Java
+*.class
+*.jar
+*.war
+*.nar
+hs_err_pid*
+.recommenders
+
+# Spring Boot / development tools
+spring-devtools.properties
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# Environment files
+.env
+.env.local
+
+# Lock files (not typically required for Java projects but harmless to ignore)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
