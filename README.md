@@ -45,7 +45,7 @@ The API will be available at `http://localhost:8080`.
 
 ### Example Input
 
-Submit a JSON payload to the `/api/convexhull` endpoint for 2D points:
+Submit a JSON payload to the `/api/v1/convexhull/compute` or `/api/v1/convexhull/compute-full` endpoint for 2D points:
 ```json
 {
   "input": [
