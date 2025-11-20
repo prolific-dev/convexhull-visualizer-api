@@ -2,9 +2,9 @@ version: '3.8'
 services:
   convexhull-visualizer-api:
     container_name: convexhull-visualizer-api
-    image: prolificdev/convexhull-visualizer-api:latest
+    build: .
     ports:
       - "8080:8080"
     environment:
-      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_PROFILES_ACTIVE=dev
     restart: always
