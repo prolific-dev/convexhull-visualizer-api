@@ -45,7 +45,14 @@ The API will be available at `http://localhost:8080`.
 
 ### Example Input
 
-Submit a JSON payload to the `/api/v1/convexhull/compute` or `/api/v1/convexhull/compute-full` endpoint for 2D points:
+Submit a JSON payload to one of the following endpoints depending on dimensionality:
+
+- `POST /api/v1/convexhull/2d/compute/hull` — compute the 2D hull (basic response)
+- `POST /api/v1/convexhull/2d/compute/full` — compute the 2D hull with full details
+- `POST /api/v1/convexhull/3d/compute/hull` — compute the 3D hull (basic response)
+- `POST /api/v1/convexhull/3d/compute/full` — compute the 3D hull with full details
+
+Example 2D payload:
 ```json
 {
   "input": [
@@ -56,7 +63,7 @@ Submit a JSON payload to the `/api/v1/convexhull/compute` or `/api/v1/convexhull
 }
 ```
 
-For 3D points:
+Example 3D payload:
 ```json
 {
   "input": [
