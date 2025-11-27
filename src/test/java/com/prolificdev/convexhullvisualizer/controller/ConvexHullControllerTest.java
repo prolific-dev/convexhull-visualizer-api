@@ -52,7 +52,7 @@ class ConvexHullControllerTest {
         when(convexHullService.compute(anyList())).thenReturn((ConvexHullResult) result);
 
         // when / then
-        mockMvc.perform(post("/api/v1/convexhull/compute")
+        mockMvc.perform(post("/api/v1/convexhull/2d/compute/hull")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
@@ -78,7 +78,7 @@ class ConvexHullControllerTest {
 
         when(convexHullService.compute(anyList())).thenReturn((ConvexHullResult) result);
 
-        mockMvc.perform(post("/api/v1/convexhull/compute-full")
+        mockMvc.perform(post("/api/v1/convexhull/2d/compute/full")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())

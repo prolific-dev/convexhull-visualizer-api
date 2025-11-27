@@ -20,8 +20,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ConvexHullController {
     private final ConvexHullService convexHullService;
 
-    @PostMapping("/compute")
-    public ConvexHullResponse compute(@RequestBody ConvexHullRequest request) {
+    @PostMapping("/2d/compute/hull")
+    public ConvexHullResponse compute2D(@RequestBody ConvexHullRequest request) {
+
+        ConvexHullResult<?> result;
+        ConvexHullResponse response = new ConvexHullResponse();
+
+        result = convexHullService.compute(request.getInput());
+
+        response.setHull(result.hull().stream().map(Object::toString).toList());
+
+        return response;
+    }
+    
+    @PostMapping("/3d/compute/hull")
+    public ConvexHullResponse compute3D(@RequestBody ConvexHullRequest request) {
 
         ConvexHullResult<?> result;
         ConvexHullResponse response = new ConvexHullResponse();
@@ -33,9 +46,26 @@ public class ConvexHullController {
         return response;
     }
 
-    @PostMapping("/compute-full")
-    public ConvexHullFullResponse computeFull(@RequestBody ConvexHullRequest request) {
+    @PostMapping("/2d/compute/full")
+    public ConvexHullFullResponse computeFull2D(@RequestBody ConvexHullRequest request) {
+        ConvexHullResult<?> result;
+        ConvexHullFullResponse response = new ConvexHullFullResponse();
+
+        result = convexHullService.compute(request.getInput());
+
+        response.setInput(request.getInput().stream().map(Object::toString).toList());
+        response.setBase(result.base().stream().map(Object::toString).toList());
+        response.setColinear(result.colinear().stream().map(Object::toString).toList());
+        response.setHull(result.hull().stream().map(Object::toString).toList());
+        response.setAlgorithm(result.algorithm());
+        response.setComputationTimeMs(result.computationTimeMs());
+        response.setTimestamp(result.timestamp().toString());
         
+        return response;
+    }
+
+    @PostMapping("/3d/compute/full")
+    public ConvexHullFullResponse computeFull3D(@RequestBody ConvexHullRequest request) {
         ConvexHullResult<?> result;
         ConvexHullFullResponse response = new ConvexHullFullResponse();
 
