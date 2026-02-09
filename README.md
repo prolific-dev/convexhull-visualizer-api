@@ -1,5 +1,6 @@
 # ConvexHull Visualizer API
 ![Build](https://github.com/prolific-dev/convexhull-visualizer-api/actions/workflows/build.yml/badge.svg)
+[![codecov](https://codecov.io/gh/prolific-dev/convexhull-visualizer-api/graph/badge.svg?token=5FOWAQLH4J)](https://codecov.io/gh/prolific-dev/convexhull-visualizer-api)
 
 The ConvexHull Visualizer API is a powerful backend service designed to calculate and visualize convex hulls for a given set of points. It provides efficient algorithms and a RESTful interface for developers to integrate convex hull calculations into their applications.
 
