@@ -1,4 +1,6 @@
 package com.prolificdev.convexhullvisualizer.core.algorithm;
+import com.prolificdev.convexhullvisualizer.core.geometry.Face;
+import com.prolificdev.convexhullvisualizer.core.geometry.Edge;
 
 import com.prolificdev.convexhullvisualizer.core.geometry.Point3D;
 import com.prolificdev.convexhullvisualizer.core.result.ConvexHullResult;
@@ -179,30 +181,5 @@ public class QuickHull3DAlgorithm implements ConvexHullAlgorithm<Point3D> {
             }
         }
         return count > 1;
-    }
-
-    private record Edge(Point3D a, Point3D b) {
-        Edge reversed() { return new Edge(b, a); }
-    }
-
-    private static class Face {
-        Point3D a, b, c;
-        Point3D normal;
-
-        Face(Point3D a, Point3D b, Point3D c) {
-            this.a = a; 
-            this.b = b; 
-            this.c = c;
-            this.normal = c.subtract(a).cross(b.subtract(a)); // flipped cross
-        }
-
-        double distanceTo(Point3D p) {
-            double denom = normal.magnitude();
-            return denom == 0 ? 0 : normal.dot(p.subtract(a)) / denom;
-        }
-
-        List<Edge> edges() {
-            return List.of(new Edge(a, b), new Edge(b, c), new Edge(c, a));
-        }
     }
 }

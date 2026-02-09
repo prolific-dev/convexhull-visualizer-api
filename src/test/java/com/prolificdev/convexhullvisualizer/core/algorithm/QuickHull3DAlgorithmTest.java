@@ -61,6 +61,23 @@ public class QuickHull3DAlgorithmTest {
     }
 
     @Test
+    void addsExteriorPointsToHull() {
+        Point3D p1 = new Point3D(0, 0, 0);
+        Point3D p2 = new Point3D(1, 0, 0);
+        Point3D p3 = new Point3D(0, 1, 0);
+        Point3D p4 = new Point3D(0, 0, 1);
+        Point3D exterior = new Point3D(0.5, 0.5, 2);
+
+        List<Point3D> pts = List.of(p1, p2, p3, p4, exterior);
+
+        ConvexHullResult<Point3D> result = quickHull.compute(pts);
+
+        assertEquals(5, result.hull().size(), "Hull should include all unique outer vertices");
+        assertTrue(result.hull().contains(exterior), "Exterior point must be part of the hull");
+        assertTrue(result.hull().containsAll(List.of(p1, p2, p3, p4)), "Original tetrahedron vertices must remain on hull");
+    }
+
+    @Test
     void returnsEmptyForCoplanarPoints() {
     List<Point3D> pts = List.of(
         new Point3D(0,0,0),

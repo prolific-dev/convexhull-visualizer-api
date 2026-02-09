@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConvexHullResponse {
+public abstract class ConvexHullResponse {
     private List<String> hull;
 }

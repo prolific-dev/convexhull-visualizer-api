@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prolificdev.convexhullvisualizer.dto.request.ConvexHullRequest;
-import com.prolificdev.convexhullvisualizer.dto.response.ConvexHullFullResponse;
-import com.prolificdev.convexhullvisualizer.dto.response.ConvexHullResponse;
+import com.prolificdev.convexhullvisualizer.dto.response.ConvexHullResponseDetail;
+import com.prolificdev.convexhullvisualizer.dto.response.ConvexHullResponseBase;
 import com.prolificdev.convexhullvisualizer.service.ConvexHullService;
 import com.prolificdev.convexhullvisualizer.core.result.ConvexHullResult;
 
@@ -20,36 +20,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ConvexHullController {
     private final ConvexHullService convexHullService;
 
-    @PostMapping("/2d/compute/hull")
-    public ConvexHullResponse compute2D(@RequestBody ConvexHullRequest request) {
+    @PostMapping("/compute/2d")
+    public ConvexHullResponseBase compute2D(@RequestBody ConvexHullRequest request) {
 
         ConvexHullResult<?> result;
-        ConvexHullResponse response = new ConvexHullResponse();
+        ConvexHullResponseBase response = new ConvexHullResponseBase();
 
         result = convexHullService.compute(request.getInput());
-
         response.setHull(result.hull().stream().map(Object::toString).toList());
 
         return response;
     }
     
-    @PostMapping("/3d/compute/hull")
-    public ConvexHullResponse compute3D(@RequestBody ConvexHullRequest request) {
+    @PostMapping("/compute/3d")
+    public ConvexHullResponseBase compute3D(@RequestBody ConvexHullRequest request) {
 
         ConvexHullResult<?> result;
-        ConvexHullResponse response = new ConvexHullResponse();
+        ConvexHullResponseBase response = new ConvexHullResponseBase();
 
         result = convexHullService.compute(request.getInput());
-
         response.setHull(result.hull().stream().map(Object::toString).toList());
 
         return response;
     }
 
-    @PostMapping("/2d/compute/full")
-    public ConvexHullFullResponse computeFull2D(@RequestBody ConvexHullRequest request) {
+    @PostMapping("/compute/2d/detail")
+    public ConvexHullResponseDetail computeFull2D(@RequestBody ConvexHullRequest request) {
         ConvexHullResult<?> result;
-        ConvexHullFullResponse response = new ConvexHullFullResponse();
+        ConvexHullResponseDetail response = new ConvexHullResponseDetail();
 
         result = convexHullService.compute(request.getInput());
 
@@ -64,10 +62,10 @@ public class ConvexHullController {
         return response;
     }
 
-    @PostMapping("/3d/compute/full")
-    public ConvexHullFullResponse computeFull3D(@RequestBody ConvexHullRequest request) {
+    @PostMapping("/compute/3d/detail")
+    public ConvexHullResponseDetail computeFull3D(@RequestBody ConvexHullRequest request) {
         ConvexHullResult<?> result;
-        ConvexHullFullResponse response = new ConvexHullFullResponse();
+        ConvexHullResponseDetail response = new ConvexHullResponseDetail();
 
         result = convexHullService.compute(request.getInput());
 
